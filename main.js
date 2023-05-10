@@ -1,24 +1,73 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './src/index.js'
 
 document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+<body>
+<nav id="navbar">
+  <a href="#" class="nav-brand">My Nutrition</a>
+</nav>
+
+<div class="container" id="main">
+  <h2>Add food</h2>
+  <form id="create-form">
+    <label for="create-name">Food name:</label>
+    <select id="create-name">
+      <option value="">Please select</option>
+      <!-- these are the only values accepted by the API -->
+      <option value="pizza">Pizza</option>
+      <option value="pasta">Pasta</option>
+      <option value="burger">Burger</option>
+      <option value="soup">Soup</option>
+      <option value="salad">Salad</option>
+      <option value="apple">Apple</option>
+      <option value="peach">Peach</option>
+      <option value="cider">Cider</option>
+    </select>
+    <div class="nutrition-values">
+      <label for="create-carbs">Carbs:</label>
+      <input
+        class="nutrition-input"
+        type="number"
+        id="create-carbs"
+        min="0"
+        max="200"
+        placeholder="0g"
+      />
+      <label for="create-protein">Protein:</label>
+      <input
+        class="nutrition-input"
+        type="number"
+        id="create-protein"
+        min="0"
+        max="200"
+        placeholder="0g"
+      />
+      <label for="create-fat">Fat:</label>
+      <input
+        class="nutrition-input"
+        type="number"
+        id="create-fat"
+        min="0"
+        max="200"
+        placeholder="0g"
+      />
+      <div></div>
+      <input
+        type="submit"
+        class="btn btn-default create-submit"
+        value="Add"
+      />
     </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+  </form>
+  <h2>Stats</h2>
+  <canvas id="app-chart" width="100%"></canvas>
+  <h2>Log</h2>
+  <div class="card" id="total-calories-container">
+    <h3>Total calories logged: <span id="total-calories">0</span></h3>
   </div>
+  <ul id="food-list"></ul>
+</div>
+</body>
 `
 
-setupCounter(document.querySelector('#counter'))
+
